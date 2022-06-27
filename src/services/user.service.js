@@ -2,11 +2,6 @@
 
 const User = require("../models/user.model");
 
-//--------------------------------- IMPORTS ----------------------------------//
-
-const jwt = require("jsonwebtoken");
-const newAccounts = require("../helpers/newAccounts");
-
 //--------------------------------- FUNCTIONS ----------------------------------//
 
 /*
@@ -24,39 +19,55 @@ exports.getAll = async () => {
 };
 
 /*
-Get By Email
-params: email, password
-return: status, token if password is correct
+Get By ID
+params: id
+return: status, user
 */
 
-exports.getByEmail = async (email, password) => {
-  let user;
-  try {
-    user = await User.findOne({ email: email });
-    if (user.password === password) {
-      let token = jwt.sign({ email: email }, "secretkey");
-      return { status: true, message: token };
-    } else {
-      return { status: false, message: "Wrong password" };
+exports.getById = async (index) => {
+    let user;
+    try {
+      user = await User.findById(index);
+      if (user) {
+        return { status: true, message: user };
+      } else {
+        return { status: false, message: "Not found" };
+      }
+    } catch (err) {
+      return { status: false, message: "Not found" };
     }
-  } catch {
-    return { status: false, message: "Not found" };
-  }
-};
-
-/*
-Post User
-params: body
-return: user
-*/
-
-exports.postUser = async (body) => {
-  const accounts = await newAccounts(body.fullName);
-  const user = new User({ ...body, accounts: accounts });
-  try {
-    await user.save();
-    return { status: true, message: user };
-  } catch (err) {
-    return { status: false, message: err };
-  }
-};
+  };
+  
+  /*
+  Update by Id
+  params: body, id
+  return: status, user
+  */
+  
+  exports.updateUser = async (body, index) => {
+    try {
+      const user = await User.findByIdAndUpdate(index, body, {
+        returnDocument: "after",
+        runValidators: true,
+      });
+      return { status: true, message: user };
+    } catch (err) {
+      return { status: false, message: err };
+    }
+  };
+  
+  /*
+  Delete by Id
+  params: id
+  return: status, message if deleted
+  */
+  
+  exports.deleteUser = async (index) => {
+    try {
+      const user = await User.findByIdAndDelete(index);
+      return { status: true, message: "Deleted" };
+    } catch {
+      return { status: false, message: err };
+    }
+  };
+  

@@ -1,30 +1,23 @@
-const FileService = require("../services/file.service")
+//--------------------------------- IMPORTS ----------------------------------//
+
 const express = require("express");
 const uploadFile = require("../middleware/upload.middleware");
+
+//--------------------------------- FUNCTIONS ----------------------------------//
+
 const fileRouter = express.Router();
 
-fileRouter.post("/",uploadFile)
+fileRouter.post("/",uploadFile);
 fileRouter.route("/")
 .post(async(req, res) => {
-    let filePath=(`../../upload/${req.filePath}`)
-    res.download(`Konrad/serverLab/${filePath}`);
-    // let newFile = require(`../../upload/${req.filePath}`)
-    // let file = await FileService.postFile({name:req.fileName,file: newFile});
+    let filePath=(`../../upload/${req.filePath}`);
+    res.status(200).download(`FinalProject/Backend/${filePath}`,{path:req.filePath});
+})
 
-    // if(file.status){
-    //     res.status(200).send(file.data) 
-    //   }
-    // else{
-    //     res.status(400).send("error") 
-    // }
-})
+fileRouter.route("/:filePath")
 .get(async(req, res) => {
-    let files = await FileService.getAll();
-    if(files.status){
-        res.status(200).send(files.data) 
-      }
-      else{
-          res.status(403).send("Not found")
-      }
+    let filePath=(`../../upload/${req.params.filePath}`);
+    res.status(200).download(`FinalProject/Backend/${filePath}`);
 })
+
 module.exports=fileRouter

@@ -1,12 +1,13 @@
 //----------------------------------- ROUTES ------------------------------------//
 
+const fileRouter = require("./routes/file.routes");
 const loginRouter = require("./routes/login.routes");
 const signupRouter = require("./routes/signup.routes");
 
 //-------------------------------- MIDDLEWARE -----------------------------------//
 
-const logFunc= require("./middleware/log.middleware")
-const error= require("./middleware/error.middleware")
+const logFunc= require("./middleware/log.middleware");
+const error= require("./middleware/error.middleware");
 
 //----------------------------------- IMPORTS -----------------------------------//
 
@@ -15,6 +16,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const express = require('express');
 const mongoose = require("mongoose");
+const userRouter = require("./routes/user.routes");
 
 //--------------------------------- CONNECTION ----------------------------------//
 
@@ -32,16 +34,18 @@ app.use(cookieParser());
 mongoose
     .connect(`${DB_HOST}/${DB_NAME}`)
     .then( () => {
-        console.log("Succesful connection")
+        console.log("Succesful connection");
     })
     .catch( (err) => {
-        console.log("Error connecting to mongo: ", err)
-    })
+        console.log("Error connecting to mongo: ", err);
+    });
 
-app.use(logFunc)
-app.use("/signup",signupRouter)
-app.use("/login",loginRouter)
-app.use(error)
+app.use(logFunc);
+app.use("/file",fileRouter);
+app.use("/signup",signupRouter);
+app.use("/login",loginRouter);
+app.use("/user",userRouter);
+app.use(error);
 
 
 module.exports = app;

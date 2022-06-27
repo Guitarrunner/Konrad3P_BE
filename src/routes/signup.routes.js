@@ -1,5 +1,9 @@
-const UserService = require("../services/user.service")
+//--------------------------------- IMPORTS ----------------------------------//
+
+const UserService = require("../services/log.service")
 const express = require("express");
+
+//--------------------------------- FUNCTIONS ----------------------------------//
 const signupRouter = express.Router();
 
 signupRouter.route('/')
@@ -12,6 +16,7 @@ signupRouter.route('/')
         res.status(403).send({message:user.message.message})
     }
 })
+
 .get(async(req, res) => {
     let users = await UserService.getAll();
     if (users.status){

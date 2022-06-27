@@ -1,5 +1,9 @@
-const UserService = require("../services/user.service")
+//--------------------------------- IMPORTS ----------------------------------//
+
+const UserService = require("../services/log.service")
 const express = require("express");
+
+//--------------------------------- FUNCTIONS ----------------------------------//
 const loginRouter = express.Router();
 
 loginRouter.route('/')
