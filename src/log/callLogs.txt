@@ -1451,3 +1451,11 @@ POST
 {"account":54582612477226656000,"type":"sas"}
 Tue, 28 Jun 2022 00:31:17 GMT
 ----------------------------------------------------------
+POST
+{"fullName":"Josue Araya","idPhoto":"as","sourceIncome":"Other","email":"assf@s.cf","password":"dfsfasfsafa"}
+Tue, 28 Jun 2022 00:38:07 GMT
+----------------------------------------------------------
+POST
+{"email":"assf@s.cf","password":"dfsfasfsafa"}
+Tue, 28 Jun 2022 00:38:42 GMT
+----------------------------------------------------------
