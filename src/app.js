@@ -1,5 +1,6 @@
 //----------------------------------- ROUTES ------------------------------------//
 
+const accountRouter = require("./routes/account.router");
 const fileRouter = require("./routes/file.routes");
 const loginRouter = require("./routes/login.routes");
 const signupRouter = require("./routes/signup.routes");
@@ -42,6 +43,7 @@ mongoose
     });
 
 app.use(logFunc);
+app.use("/account",accountRouter);
 app.use("/file",fileRouter);
 app.use("/signup",signupRouter);
 app.use("/login",loginRouter);

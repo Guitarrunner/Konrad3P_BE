@@ -60,8 +60,9 @@ exports.postUser = async (body) => {
   const salt = await bcrypt.genSalt(10);
   body.password = await bcrypt.hash(body.password, salt);
 
-  const user = new User({ ...body, accounts: accounts, services: services});
+  
   try {
+    const user = new User({ ...body, accounts: accounts, services: services});
     await user.save();
     return { status: true, message: user };
   } catch (err) {

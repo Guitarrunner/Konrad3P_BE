@@ -7,7 +7,6 @@ const User = require("../models/user.model");
 const getUserByAccount = require("../helpers/getUserByAccount");
 const listServices = require("../custom/services.json")
 const updateAmount = require("../helpers/updateAmount");
-const UserService = require("../services/user.service");
 
 //--------------------------------- FUNCTIONS ----------------------------------//
 
