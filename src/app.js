@@ -3,6 +3,8 @@
 const fileRouter = require("./routes/file.routes");
 const loginRouter = require("./routes/login.routes");
 const signupRouter = require("./routes/signup.routes");
+const userRouter = require("./routes/user.routes");
+const transactionRouter = require("./routes/transaction.routes");
 
 //-------------------------------- MIDDLEWARE -----------------------------------//
 
@@ -16,7 +18,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const express = require('express');
 const mongoose = require("mongoose");
-const userRouter = require("./routes/user.routes");
 
 //--------------------------------- CONNECTION ----------------------------------//
 
@@ -44,6 +45,7 @@ app.use(logFunc);
 app.use("/file",fileRouter);
 app.use("/signup",signupRouter);
 app.use("/login",loginRouter);
+app.use("/transaction", transactionRouter);
 app.use("/user",userRouter);
 app.use(error);
 

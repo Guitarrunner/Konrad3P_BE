@@ -17,6 +17,7 @@ signupRouter.route('/')
     }
 })
 
+
 .get(async(req, res) => {
     let users = await UserService.getAll();
     if (users.status){

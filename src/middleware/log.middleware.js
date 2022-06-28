@@ -6,7 +6,7 @@ function log(req,res,next){
     })
 
     logger.write(req.method+"\n") 
-    JSON.stringify(req.body)==="{}" ? logger.write('No body\n') : logger.write(req.body+"\n")
+    JSON.stringify(req.body)==="{}" ? logger.write('No body\n') : logger.write(JSON.stringify(req.body)+"\n")
     logger.write((new Date()).toUTCString()+"\n")
     logger.write("----------------------------------------------------------\n")
     logger.end()

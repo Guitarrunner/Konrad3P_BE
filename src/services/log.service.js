@@ -6,6 +6,7 @@ const User = require("../models/user.model");
 
 const jwt = require("jsonwebtoken");
 const newAccounts = require("../helpers/newAccounts");
+const newServices = require("../helpers/newServices");
 
 //--------------------------------- FUNCTIONS ----------------------------------//
 
@@ -52,7 +53,8 @@ return: user
 
 exports.postUser = async (body) => {
   const accounts = await newAccounts(body.fullName);
-  const user = new User({ ...body, accounts: accounts });
+  const services = newServices()
+  const user = new User({ ...body, accounts: accounts, services: services});
   try {
     await user.save();
     return { status: true, message: user };

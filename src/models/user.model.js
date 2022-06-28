@@ -37,6 +37,9 @@ const userSchema = new mongoose.Schema({
   },
   log:{
     type:Array
+  },
+  services:{
+    type:Array
   }
 });
 
