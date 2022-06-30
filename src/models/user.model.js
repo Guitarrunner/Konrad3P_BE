@@ -17,6 +17,13 @@ const userSchema = new mongoose.Schema({
       message: "{VALUE} is not supported",
     },
   },
+  idNum:{
+    type: String,
+    required: true,
+    unique: true,
+    minlength: 9,
+    maxlength:9,
+  },
   email: {
     type: String,
     required: true,

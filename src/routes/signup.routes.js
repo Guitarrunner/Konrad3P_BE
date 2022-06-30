@@ -11,9 +11,9 @@ signupRouter.route('/')
     let body =req.body;
     let user = await UserService.postUser(body);
     if (user.status){
-        res.status(200).send({message:user.message})}
+        res.status(200).send({message:"Succesful!"})}
     else{
-        res.status(403).send({message:user.message.message})
+        res.status(403).send({message:"Error on sign up"})
     }
 })
 

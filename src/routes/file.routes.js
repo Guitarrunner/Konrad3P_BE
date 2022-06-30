@@ -11,7 +11,7 @@ fileRouter.post("/",uploadFile);
 fileRouter.route("/")
 .post(async(req, res) => {
     let filePath=(`../../upload/${req.filePath}`);
-    res.status(200).download(`FinalProject/Backend/${filePath}`,{path:req.filePath});
+    res.status(200).send({message:filePath});
 })
 
 fileRouter.route("/:filePath")
