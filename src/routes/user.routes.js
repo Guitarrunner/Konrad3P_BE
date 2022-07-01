@@ -21,7 +21,7 @@ userRouter.route('/:id')
     let index = req.params.id;
     let user = await UserService.getById(index);
     if(user.status){
-        res.status(200).send(user.message);
+        res.status(200).send({user:user.message});
     }
     else{
         res.status(404).send(user.message)

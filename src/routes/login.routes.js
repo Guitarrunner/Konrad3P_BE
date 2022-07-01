@@ -12,7 +12,7 @@ loginRouter.route('/')
     let password =req.body.password;
     let token = await UserService.getByEmail(email,password);
     if(token.status){
-        res.status(200).send({token:token.message});
+        res.status(200).send({token:token.message, id: token.id});
     }
     else{
         res.status(403).send({token:null,message:token.message});

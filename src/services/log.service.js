@@ -38,7 +38,7 @@ exports.getByEmail = async (email, password) => {
     const validPassword = await bcrypt.compare(password, user.password);
     if (validPassword) {
       let token = jwt.sign({ email: email }, "secretkey");
-      return { status: true, message: token };
+      return { status: true, message: token, id: user._id };
     } else {
       return { status: false, message: "Wrong password" };
     }

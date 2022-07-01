@@ -11,7 +11,9 @@ transactionRouter.route('/transfer')
     let toDebit = parseInt(req.body.toDebit);
     let toCredit = parseInt(req.body.toCredit);
     let amount = parseInt(req.body.amount);
-    let response = await TransactionService.trasnferMoney(toDebit,toCredit,amount);
+    let typeTransaction = req.body.typeTransaction;
+    let type = req.body.type;
+    let response = await TransactionService.trasnferMoney(toDebit,toCredit,amount,typeTransaction,type);
     if(response.status){
         res.status(200).send({message:response.message});
     }
