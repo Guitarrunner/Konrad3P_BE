@@ -24,15 +24,17 @@ const mongoose = require("mongoose");
 
 const DB_HOST = process.env.DB_HOST || "mongodb+srv://guitarrunner:89385774jdag@bankkonrad.tvbj9.mongodb.net/?retryWrites=true&w=majority";
 const DB_NAME = process.env.DB_NAME || "bank-data"
-
+const url = process.env.ORIGIN_URL || "http://localhost:3000"
 //----------------------------------- SERVER ------------------------------------//
 
 const app = express();
-// app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', url);
+    next();
+  });
 mongoose
     .connect(DB_HOST,{ useNewUrlParser: true, useUnifiedTopology: true },)
     .then( () => {
