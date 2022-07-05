@@ -16,40 +16,31 @@ const error= require("./middleware/error.middleware");
 
 require('dotenv').config()
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const express = require('express');
 const mongoose = require("mongoose");
 
 //--------------------------------- CONNECTION ----------------------------------//
 
-const DB_HOST = process.env.DB_HOST || "mongodb://localhost:27017";
+const DB_HOST = process.env.DB_HOST || "mongodb+srv://guitarrunner:89385774jdag@bankkonrad.tvbj9.mongodb.net/?retryWrites=true&w=majority";
 const DB_NAME = process.env.DB_NAME || "bank-data"
 
 //----------------------------------- SERVER ------------------------------------//
 
 const app = express();
+// app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 mongoose
-    .connect(`${DB_HOST}/${DB_NAME}`)
+    .connect(DB_HOST,{ useNewUrlParser: true, useUnifiedTopology: true },)
     .then( () => {
         console.log("Succesful connection");
     })
     .catch( (err) => {
         console.log("Error connecting to mongo: ", err);
     });
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )})   
 
 app.use(logFunc);
 app.use("/account",accountRouter);
