@@ -16,7 +16,6 @@ const error= require("./middleware/error.middleware");
 
 require('dotenv').config()
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
 const express = require('express');
 const mongoose = require("mongoose");
 
@@ -40,6 +39,17 @@ mongoose
     .catch( (err) => {
         console.log("Error connecting to mongo: ", err);
     });
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )})   
 
 app.use(logFunc);
 app.use("/account",accountRouter);
