@@ -29,6 +29,7 @@ const url = process.env.ORIGIN_URL || "http://localhost:3000"
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use((req, res, next) => {
