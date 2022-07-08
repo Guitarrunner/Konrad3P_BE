@@ -13,7 +13,7 @@ signupRouter.route('/')
     if (user.status){
         res.status(200).send({message:"Succesful!",user:user.message})}
     else{
-        res.status(403).send({message:"Error on sign up"})
+        res.status(403).send({message: JSON.parse(user.message)})
     }
 })
 

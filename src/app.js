@@ -6,6 +6,7 @@ const loginRouter = require("./routes/login.routes");
 const signupRouter = require("./routes/signup.routes");
 const userRouter = require("./routes/user.routes");
 const transactionRouter = require("./routes/transaction.routes");
+const authorize = require("./middleware/auth.middleware");
 
 //-------------------------------- MIDDLEWARE -----------------------------------//
 
@@ -29,7 +30,7 @@ const url = process.env.ORIGIN_URL || "http://localhost:3000"
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors({credentials:true, origin: url}))
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use((req, res, next) => {
@@ -46,6 +47,7 @@ mongoose
     });
 
 app.use(logFunc);
+app.post(["/transaction",authorize]);
 app.use("/account",accountRouter);
 app.use("/file",fileRouter);
 app.use("/signup",signupRouter);

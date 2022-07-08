@@ -90,7 +90,7 @@ exports.trasnferMoney = async (
 
           let logDebit = [...accToDebit.log];
           logDebit.push({
-            type: "debit",
+            type: "Debit",
             amount: amount,
             date: new Date().toUTCString(),
           });
@@ -118,7 +118,7 @@ exports.trasnferMoney = async (
 
         let logCredit = [...accToCredit.log];
         logCredit.push({
-          type: "credit",
+          type: "Credit",
           amount: amount,
           date: new Date().toUTCString(),
         });
@@ -165,7 +165,7 @@ exports.payService = async (account, typeService) => {
 
       updateServices.splice(index, 1);
       logDebit.push({
-        type: `debit - service - ${typeService}`,
+        type: `Debit - Paid Service - ${typeService}`,
         amount: amount,
         date: new Date().toUTCString(),
       });

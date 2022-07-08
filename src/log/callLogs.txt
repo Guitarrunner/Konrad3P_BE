@@ -3023,3 +3023,43 @@ GET
 No body
 Tue, 05 Jul 2022 20:15:26 GMT
 ----------------------------------------------------------
+GET
+No body
+Tue, 05 Jul 2022 21:15:59 GMT
+----------------------------------------------------------
+GET
+No body
+Tue, 05 Jul 2022 21:16:16 GMT
+----------------------------------------------------------
+GET
+No body
+Tue, 05 Jul 2022 21:16:49 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"","idNum":"123456789","sourceIncome":"Retired","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:16:58 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"","idNum":"123456789","sourceIncome":"Retired","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:17:39 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"","idNum":"123456789","sourceIncome":"Retired","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:18:37 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"as","idNum":"123456789","sourceIncome":"Other","email":"marco@solano.com","password":"89385774Jdag!"}
+Tue, 05 Jul 2022 21:19:51 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"","idNum":"123456789","sourceIncome":"Retired","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:24:08 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"","idNum":"123333333","sourceIncome":"Bussiness Owner","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:25:44 GMT
+----------------------------------------------------------
+POST
+{"fullName":"Marco Solano","idPhoto":"as","idNum":"123333333","sourceIncome":"Bussiness Owner","email":"jdag98227@gmail.com","password":"123456aA!"}
+Tue, 05 Jul 2022 21:26:34 GMT
+----------------------------------------------------------
